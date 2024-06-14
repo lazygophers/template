@@ -13,4 +13,4 @@ go-mod:
 
 template:
     state:
-        state: "template/state/state.gtpl"
+        state: "/template/state/state.gtpl"
