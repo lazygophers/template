@@ -12,4 +12,5 @@ go-mod:
     increase: true
 
 template:
-    state: "template/state/state.gtpl"
+    state:
+        state: "template/state/state.gtpl"
