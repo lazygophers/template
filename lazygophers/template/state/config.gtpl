@@ -19,12 +19,21 @@ type Config struct {
 	// NOTE: Please fill in the configuration below
 }
 
+func (p *Config) apply() {
+}
+
 func LoadConfig() (err error) {
 	err = config.LoadConfig(State.Config)
 		if err != nil {
 		log.Errorf("err:%v", err)
 		return err
 	}
+
+	if app.Name == "" {
+		app.Name = State.Config.Name
+	}
+
+	State.Config.apply()
 
 	return nil
 }
