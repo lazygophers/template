@@ -1,12 +1,7 @@
 project_name: {{ .PB.GoPackageName }}
 env:
     - GO111MODULE=on
-    - GOSUMDB=off
     - CGO_ENABLED=0
-
-gomod:
-    proxy: true
-    mod: mod
 
 builds:
     -   id: {{ .PB.GoPackageName }}
