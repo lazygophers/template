@@ -23,6 +23,7 @@ func (p *Config) apply() {
 }
 
 func LoadConfig() (err error) {
+	State.Config = new(Config)
 	err = config.LoadConfig(State.Config)
 		if err != nil {
 		log.Errorf("err:%v", err)
