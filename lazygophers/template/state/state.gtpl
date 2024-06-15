@@ -1,9 +1,11 @@
 package state
 
 import (
-	"github.com/lazygophers/log"{{ with .Config.I18n }}
+	"github.com/lazygophers/log"
+	"github.com/lazygophers/utils/app"{{ with .Config.I18n }}
 	"github.com/lazygophers/lrpc/middleware/i18n"{{end}}
 	"github.com/lazygophers/lrpc/middleware/storage/etcd"
+	"github.com/lazygophers/utils/app"
 )
 
 type state struct {
@@ -17,6 +19,8 @@ type state struct {
 var State = new(state)
 
 func Load() (err error) {
+	log.SetPrefixMsg(app.Name)
+
 	err = LoadConfig()
 	if err != nil {
 	    log.Errorf("err:%v", err)

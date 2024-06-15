@@ -32,6 +32,7 @@ func LoadConfig() (err error) {
 
 	if app.Name == "" {
 		app.Name = State.Config.Name
+		log.SetPrefixMsg(app.Name)
 	}
 
 	State.Config.apply()
