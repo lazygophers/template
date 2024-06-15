@@ -35,36 +35,7 @@ builds:
         targets:
             - linux_amd64_v3
 
-dockers:
-    -   id: {{ .ProjectName }}
-        skip_build: true
-        skip_push: true
-        push_flags:
-            - --tls-verify=false
-        extra_files:
-            - config.yaml
-        image_templates:
-            - "{{ .ProjectName }}:latest"
-
 archives:
-    -   format: tar.gz
-        name_template: '{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}{{ with .Arm }}v{{ . }}{{ end }}{{ with .Mips }}_{{ . }}{{ end }}{{ if not (eq .Amd64 "v1") }}{{ .Amd64 }}{{ end }}'
-        format_overrides:
-            -   goos: windows
-                format: zip
-        files:
-            - config.example.yaml
-
-checksum:
-    algorithm: sha512
-    name_template: '{{ .ProjectName }}_{{ .Version }}.sha512'
-
-source:
-    enabled: false
-    files:
-        - LICENSE
-        - README.md
-        - config.example.yaml
-        - '*.go'
+    -   format: binary
 
 report_sizes: true
