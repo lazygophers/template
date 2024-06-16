@@ -19,6 +19,8 @@ func main() {
 	})
 
 	app.OnListen(ldiscovery.OnListen)
+	app.OnShutdown(ldiscovery.OnShutdown)
+
 	app.AddRoutes(Routes)
 
 	err = app.ListenAndServe(state.State.Config.Port)
