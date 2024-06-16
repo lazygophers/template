@@ -4,6 +4,7 @@ import (
 	"github.com/lazygophers/log"
 	"github.com/lazygophers/utils/app"{{ with .Config.I18n }}
 	"github.com/lazygophers/lrpc/middleware/i18n"{{end}}
+	"github.com/lazygophers/lrpc/middleware/service_discovery/ldiscovery"
 	"github.com/lazygophers/lrpc/middleware/storage/etcd"
 	"github.com/lazygophers/utils/app"
 )
@@ -31,7 +32,8 @@ func Load() (err error) {
 	if err != nil {
 		log.Errorf("err:%v", err)
 		return err
-	}{{ with .Config.I18n}}
+	}
+	ldiscovery.SetEtcd(State.Etcd){{ with .Config.I18n}}
 
 	err = LoadI18n()
 	if err != nil {

@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/lazygophers/{{ .PB.GoPackageName }}/internal/state"
 	"github.com/lazygophers/log"
+	"github.com/lazygophers/lrpc/middleware/service_discovery/ldiscovery"
 	"github.com/lazygophers/lrpc"
 )
 
@@ -17,6 +18,7 @@ func main() {
 		Name: state.State.Config.Name,
 	})
 
+	app.OnListen(ldiscovery.OnListen)
 	app.AddRoutes(Routes)
 
 	err = app.ListenAndServe(state.State.Config.Port)
