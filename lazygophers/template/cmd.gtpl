@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/lazygophers/{{ .PB.GoPackageName }}/internal/state"
+	"{{ .PB.GoPackage }}/internal/state"
 	"github.com/lazygophers/log"
 	"github.com/lazygophers/lrpc/middleware/service_discovery/ldiscovery"
 )
