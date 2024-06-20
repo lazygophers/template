@@ -4,7 +4,6 @@ import (
 	"github.com/lazygophers/{{ .PB.GoPackageName }}/internal/state"
 	"github.com/lazygophers/log"
 	"github.com/lazygophers/lrpc/middleware/service_discovery/ldiscovery"
-	"github.com/lazygophers/lrpc"
 )
 
 func main() {
@@ -13,10 +12,6 @@ func main() {
 		log.Errorf("err:%v", err)
 		return
 	}
-
-	app := lrpc.NewApp(&lrpc.Config{
-		Name: state.State.Config.Name,
-	})
 
 	app.OnListen(ldiscovery.OnListen)
 	app.OnShutdown(ldiscovery.OnShutdown)
