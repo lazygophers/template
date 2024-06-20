@@ -15,5 +15,7 @@ template:
     state:
         config: "template/state/config.gtpl"
         state: "template/state/state.gtpl"
+    impl:
+        client: "template/client.gtpl"
     goreleaser: "template/goreleaser.gtpl"
     main: "template/cmd.gtpl"
